@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiny Droplets Bring Big Benefits — Omkar Hegde</title>
+  <meta name="description" content="A DST AWSAR award-winning popular-science piece on the hidden flows inside an evaporating drop, and how vapor-mediated Marangoni flow steers where particles land.">
+  <link rel="canonical" href="https://omkarhegde.com/blog-awsar.html">
+  <meta name="author" content="Omkar Hegde">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Omkar Hegde">
+  <meta property="og:title" content="Tiny Droplets Bring Big Benefits — Omkar Hegde">
+  <meta property="og:description" content="A DST AWSAR award-winning popular-science piece on the hidden flows inside an evaporating drop, and how vapor-mediated Marangoni flow steers where particles land.">
+  <meta property="og:url" content="https://omkarhegde.com/blog-awsar.html">
+  <meta property="og:image" content="https://omkarhegde.com/assets/og-preview.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tiny Droplets Bring Big Benefits — Omkar Hegde">
+  <meta name="twitter:description" content="A DST AWSAR award-winning popular-science piece on the hidden flows inside an evaporating drop, and how vapor-mediated Marangoni flow steers where particles land.">
+  <meta name="twitter:image" content="https://omkarhegde.com/assets/og-preview.jpg">
+  <meta name="twitter:site" content="@omkar62">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Tiny Droplets Bring Big Benefits",
+    "description": "A DST AWSAR award-winning popular-science piece on the hidden flows inside an evaporating drop, and how vapor-mediated Marangoni flow steers where particles land.",
+    "author": { "@type": "Person", "name": "Omkar Hegde", "url": "https://omkarhegde.com/" },
+    "publisher": { "@type": "Person", "name": "Omkar Hegde" },
+    "mainEntityOfPage": "https://omkarhegde.com/blog-awsar.html",
+    "keywords": ["evaporating droplets", "Marangoni flow", "coffee ring", "micro-PIV", "science communication", "soft matter"]
+  }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body, body * { font-family: var(--font-mono) !important; }
+    html, body { background: #000 !important; }
+    .footer, .footer * { background: #000 !important; }
+    .footer { border-top: 1px solid rgba(255,255,255,0.08) !important; }
+    .footer__bottom { border-top: none !important; border-bottom: none !important; }
+    .page-header.section { padding-bottom: 1.25rem !important; }
+    .section--compact { padding-top: 0.5rem !important; padding-bottom: 1.25rem !important; }
+
+    .page-header__desc { color:#c4c4c4 !important; text-align:justify; }
+    .post{ max-width:760px; margin:0 auto; }
+    .post__body p{ color:#cfcfcf; line-height:1.85; font-size:1rem; text-align:justify; margin:0 0 1.15rem; }
+    .post__body p b{ color:#fff; font-weight:500; }
+    .post__lead{ color:#e9e9e9 !important; font-size:1.08rem !important; }
+    .post__ref{ display:inline-block; margin-top:0.3rem; color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(0,212,170,0.4); transition:border-color .2s; }
+    .post__ref:hover{ border-bottom-color:var(--accent); }
+    .post__back{ display:inline-block; margin-top:2.5rem; color:var(--text-muted); text-decoration:none; font-size:0.9rem; transition:color .2s; }
+    .post__back:hover{ color:var(--accent); }
+
+    /* hero with droplet image + slow calm zoom */
+    .drop-hero{ position:relative; min-height:clamp(300px,46vh,460px); display:flex; align-items:flex-end; padding:calc(72px + 2rem) var(--space-md) 2.4rem; overflow:hidden; background:#000; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .drop-hero__bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; animation:dropZoom 26s ease-in-out infinite alternate; }
+    @keyframes dropZoom{ from{ transform:scale(1); } to{ transform:scale(1.08); } }
+    @media (prefers-reduced-motion: reduce){ .drop-hero__bg{ animation:none; } }
+    .drop-hero::after{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.28) 45%, rgba(0,0,0,0.86) 100%); }
+    .drop-hero__inner{ position:relative; z-index:2; max-width:900px; margin:0 auto; width:100%; }
+    .drop-hero .page-header__title{ text-shadow:0 2px 24px rgba(0,0,0,0.75); margin:0.35rem 0 0; }
+    .drop-hero .page-header__desc{ color:#dcdcdc !important; text-shadow:0 1px 12px rgba(0,0,0,0.85); max-width:640px; text-align:left; }
+    .drop-hero .page-header__pre{ text-shadow:0 1px 10px rgba(0,0,0,0.85); }
+
+    /* magazine touches to break the text */
+    .post__lead::first-letter{ font-size:3.1rem; line-height:0.9; float:left; margin:0.15rem 0.5rem 0 0; color:var(--accent); font-weight:400; }
+    .drop-pull{ margin:1.9rem 0; padding:0.1rem 0 0.1rem 1.2rem; border-left:2px solid var(--accent); font-size:1.28rem; line-height:1.5; color:#ededed; font-weight:300; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo">Omkar <span>Hegde</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="journey.html">Journey</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Connect</a></li>
+    </ul>
+    <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="nav__mobile" role="dialog" aria-label="Mobile navigation">
+    <button class="nav__mobile-close" aria-label="Close menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="research.html">Research</a>
+    <a href="publications.html">Publications</a>
+    <a href="journey.html">Journey</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Connect</a>
+  </div>
+
+
+  <section class="drop-hero">
+    <img class="drop-hero__bg" src="assets/blog/droplets-rain.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
+    <div class="drop-hero__inner">
+      <span class="page-header__pre reveal">Blog &middot; Science writing</span>
+      <h1 class="page-header__title reveal">Tiny Droplets Bring Big Benefits</h1>
+      <p class="page-header__desc reveal">The popular science story that won a DST AWSAR award, on the busy, hidden life inside an evaporating drop.</p>
+    </div>
+  </section>
+
+  <section class="section--compact">
+    <div class="container">
+      <article class="post reveal">
+        <div class="post__body">
+          <p class="post__lead">A drop of rain, a spill of coffee, a bead of blood on a glass slide. Each is a millimetre of liquid, and each hides a surprising amount of motion inside.</p>
+          <p>Think of the ring a coffee spill leaves behind. As the drop dries, its particles drift to the rim and stain a circle. They do that because a flow inside the drop carries them there. Learn to steer that flow and you decide where everything lands, which is exactly what you need for printing, for coatings, even for laying down a working circuit from droplets of ink.</p>
+          <p>During my PhD at the Indian Institute of Science I watched these flows head on. We seeded drops with tracer particles a micron across, filmed them through zoom lenses, and read the internal velocities with a method called micro-particle image velocimetry, letting the particles report the currents they were caught in.</p>
+          <blockquote class="drop-pull">You can steer the current inside a drop without ever touching it.</blockquote>
+          <p>The result I am fondest of is this. You can control the flow inside a drop without ever touching it. Set a more volatile drop, alcohol for instance, beside a water drop, and its uneven vapour lowers the surface tension on the near side. That small imbalance drives a flow through the whole drop. In a sluggish, low-volatility drop the internal motion rose by a factor of about a thousand, simply from a neighbour placed nearby.</p>
+          <p>This sounds abstract until two liquids have to mix in a hurry. A drop of blood and a reagent must blend before they can read out a glucose level, and left alone that mixing can crawl. Place a small alcohol drop alongside and it races. The same idea helps cool electronics, pattern deposits on demand, and points toward a whole laboratory shrunk onto a chip.</p>
+          <p>Writing this for the Department of Science and Technology's AWSAR initiative, which asks researchers to tell their work in plain language, turned out to be its own experiment. Taking the jargon out forces you to find what is genuinely interesting underneath. The piece won an AWSAR award in 2019, and I still believe the effort of explaining simply made me a clearer scientist.</p>
+          <a class="post__ref" href="assets/blog/AWSAR_Award_OmkarHegde.pdf" target="_blank" rel="noopener">Read the original story (PDF)</a>
+        </div>
+        <a class="post__back" href="blog.html">&larr; All posts</a>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer" style="padding: 0; margin: 0; background: #000;"><div class="container" style="padding: var(--space-md) var(--space-md); background: #000;"><div class="footer__bottom" style="padding: 0; margin: 0;"><span>&copy; 2026 Omkar Hegde</span><span>Built with curiosity and care.</span></div></div></footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

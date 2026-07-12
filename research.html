@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Omkar Hegde</title>
+  <meta name="description" content="Research in soft matter physics: DNA nanostar condensates, liquid-liquid phase separation, self-assembly, evaporating-droplet transport and pattern formation, microfluidics, active matter, CFD, and AI-enabled diagnostics.">
+  <link rel="canonical" href="https://omkarhegde.com/research.html">
+  <meta name="author" content="Omkar Hegde">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Omkar Hegde">
+  <meta property="og:title" content="Research — Omkar Hegde">
+  <meta property="og:description" content="Research in soft matter physics: DNA nanostar condensates, liquid-liquid phase separation, self-assembly, evaporating-droplet transport and pattern formation, microfluidics, active matter, CFD, and AI-enabled diagnostics.">
+  <meta property="og:url" content="https://omkarhegde.com/research.html">
+  <meta property="og:image" content="https://omkarhegde.com/assets/og-preview.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Research — Omkar Hegde">
+  <meta name="twitter:description" content="Research in soft matter physics: DNA nanostar condensates, liquid-liquid phase separation, self-assembly, evaporating-droplet transport and pattern formation, microfluidics, active matter, CFD, and AI-enabled diagnostics.">
+  <meta name="twitter:image" content="https://omkarhegde.com/assets/og-preview.jpg">
+  <meta name="twitter:site" content="@omkar62">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+  <style>
+    /* NOTE: no font-family overrides here — typography is inherited from css/styles.css
+       so this page matches every other page on the site. Only layout + page-local accents. */
+    html,body{ background:#000 !important; }
+    .footer,.footer *{ background:#000 !important; }
+    :root{
+      --rs-accent:var(--accent,#00d4aa);
+      --rs-accent2:#3fe6cb;
+      --rs-text:var(--text,#ededed);
+      --rs-mut:#bcbcbc;
+      --rs-sec:#d4d4d4;
+      --rs-line:rgba(0,212,170,.32);
+      --rs-panel:#070808;
+      --rs-gut:clamp(18px,4vw,56px);
+    }
+    .rs *{ box-sizing:border-box; }
+
+    /* MASTHEAD — large heading, minimal top offset for fixed nav */
+    .rs-mast{ padding:92px var(--rs-gut) 16px; border-bottom:1px solid var(--rs-line); }
+    .rs-mast__k{ font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; color:var(--rs-accent); opacity:.8; margin-bottom:8px; text-align:center; }
+    .rs-mast__h{ font-size:clamp(2.6rem,9vw,5.4rem); font-weight:300; color:#fff; line-height:.96; letter-spacing:-.01em; margin:0; }
+    .rs-mast__s{ font-size:.92rem; color:var(--rs-sec); line-height:1.6; margin:14px 0 0; max-width:680px; }
+    .rs-mast__s b{ color:var(--rs-accent); font-weight:500; }
+
+    /* BLOCK — full width, tight vertical rhythm, hairline separators */
+    .rs-blk{ padding:30px var(--rs-gut); border-bottom:1px solid var(--rs-line); }
+    .rs-blk:last-of-type{ border-bottom:none; }
+    .rs-head{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; margin:0 auto 12px; }
+    .rs-k{ font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--rs-accent); opacity:.85; }
+    .rs-h{ font-size:clamp(1.6rem,3.4vw,2.5rem); font-weight:300; color:#fff; line-height:1.18; margin:0; }
+    .rs-h em{ font-style:normal; color:var(--rs-accent); }
+    .rs-lede{ font-size:.98rem; color:var(--rs-sec); line-height:1.7; margin:0 auto; max-width:760px; text-align:center; }
+    .rs-lede .hl{ color:var(--rs-accent); }
+    .rs-lede b{ color:#fff; font-weight:500; }
+
+    /* split text+figure, full width */
+    .rs-split{ display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; margin-top:16px; text-align:left; }
+    .rs-split--wide{ grid-template-columns:1fr 1.3fr; }
+    .rs-split--narrow{ grid-template-columns:1.25fr 1fr; }
+    .rs-split p{ font-size:.95rem; color:var(--rs-mut); line-height:1.75; margin:0 0 12px; }
+    .rs-split p:last-child{ margin-bottom:0; }
+    .rs-split p b{ color:var(--rs-sec); font-weight:500; }
+    .rs-split p .hl{ color:var(--rs-accent); }
+    @media(max-width:820px){ .rs-split,.rs-split--wide,.rs-split--narrow{ grid-template-columns:1fr; gap:16px; } }
+
+    .rs-fig{ background:var(--rs-panel); border:1px solid var(--rs-line); }
+    .rs-fig svg,.rs-fig video{ display:block; width:100%; height:auto; }
+    .rs-cap{ padding:10px 13px; font-size:.82rem; letter-spacing:.03em; text-transform:uppercase; color:#e6e6e6; border-top:1px solid var(--rs-line); display:flex; justify-content:space-between; gap:12px; background:rgba(0,0,0,.4); }
+    .rs-cap span{ color:var(--rs-accent); opacity:.85; white-space:nowrap; }
+
+    .rs-trio{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+    @media(max-width:760px){ .rs-trio{ grid-template-columns:1fr; } }
+    .rs-card{ background:var(--rs-panel); border:1px solid var(--rs-line); }
+    .rs-card svg{ display:block; width:100%; height:auto; }
+    .rs-card__b{ padding:11px 13px; }
+    .rs-card__t{ font-size:.86rem; color:#fff; margin:0 0 4px; }
+    .rs-card__d{ font-size:.78rem; color:var(--rs-mut); line-height:1.55; margin:0; }
+
+    /* crossfading image loop tiles (healthy / infected / SEM) */
+    .rs-loop{ position:relative; }
+    .rs-loop__stack{ position:relative; aspect-ratio:3/2; overflow:hidden; background:#070808; }
+    .rs-loop__f{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity .6s ease; }
+    .rs-loop.is-empty .rs-loop__stack::after{ content:'add images'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#33524b; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; }
+    @media(prefers-reduced-motion:reduce){ .rs-loop__f{ transition:none; } }
+
+    /* one tile, two alternating scenes on a shared 16s clock: micro-CT segmentation (0-9s), watershed flood (9-16s) */
+    .rs-ctcyc{ position:relative; aspect-ratio:4/3; overflow:hidden; background:#000; }
+    .rs-ctcyc__scene{ position:absolute; inset:0; }
+    .rs-ctcyc img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+    .rs-scene-ct{ opacity:1; animation:ctScene 16s ease-in-out infinite; }
+    .rs-scene-ws{ opacity:0; animation:wsScene 16s ease-in-out infinite; }
+    @keyframes ctScene{ 0%,53%{opacity:1} 56%,97%{opacity:0} 100%{opacity:1} }
+    @keyframes wsScene{ 0%,53%{opacity:0} 56%,97%{opacity:1} 100%{opacity:0} }
+    .rs-ct__teal{ clip-path:inset(0 100% 0 0); animation:ctSweep 16s ease-in-out infinite; }
+    .rs-ct__eik{ clip-path:inset(0 0 100% 0); animation:ctFlood 16s ease-in-out infinite; }
+    .rs-ct__sweep{ position:absolute; top:0; bottom:0; width:1.5px; left:0; background:#00d4aa; box-shadow:0 0 8px 1px rgba(0,212,170,.6); opacity:0; animation:ctSweepLine 16s ease-in-out infinite; }
+    .rs-ct__flood{ position:absolute; left:0; right:0; height:1px; top:0; background:#fff; opacity:0; animation:ctFloodLine 16s ease-in-out infinite; }
+    @keyframes ctSweep{ 0%,4%{clip-path:inset(0 100% 0 0)} 14%,50%{clip-path:inset(0 0 0 0)} 52%,100%{clip-path:inset(0 100% 0 0)} }
+    @keyframes ctFlood{ 0%,20%{clip-path:inset(0 0 100% 0)} 34%,50%{clip-path:inset(0 0 0 0)} 52%,100%{clip-path:inset(0 0 100% 0)} }
+    @keyframes ctSweepLine{ 0%,4%{left:0;opacity:0} 5%{opacity:1} 14%{left:100%;opacity:1} 16%{opacity:0} 100%{opacity:0} }
+    @keyframes ctFloodLine{ 0%,20%{top:0;opacity:0} 22%{opacity:.6} 34%{top:100%;opacity:.6} 36%{opacity:0} 100%{opacity:0} }
+    .rs-ws__base{ filter:grayscale(1) brightness(.85) contrast(1.05); }
+    .rs-ws__flood{ clip-path:inset(100% 0 0 0); animation:wsFlood 16s ease-in-out infinite; }
+    .rs-ws__line{ position:absolute; left:0; right:0; height:2px; top:100%; background:#3fe6cb; box-shadow:0 0 12px 2px rgba(0,212,170,.55); animation:wsLine 16s ease-in-out infinite; }
+    @keyframes wsFlood{ 0%,60%{clip-path:inset(100% 0 0 0)} 85%,96%{clip-path:inset(0 0 0 0)} 100%{clip-path:inset(100% 0 0 0)} }
+    @keyframes wsLine{ 0%,60%{top:100%} 85%,96%{top:0} 100%{top:100%} }
+
+    /* vapor: six VMI demo videos */
+    .rs-vgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:820px){ .rs-vgrid{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:520px){ .rs-vgrid{ grid-template-columns:1fr; } }
+    .rs-vgrid .vid{ position:relative; aspect-ratio:4/3; overflow:hidden; background:#000; }
+    .rs-vgrid video{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; }
+    .rs-vdesc{ padding:8px 12px 11px; font-size:.78rem; color:var(--rs-sec); line-height:1.55; margin:0; }
+    .rs-vdesc .hl{ color:var(--rs-accent); }
+    .rs-ref{ color:var(--rs-accent); text-decoration:none; border-bottom:1px solid rgba(0,212,170,.45); white-space:nowrap; }
+    .rs-ref:hover{ color:var(--rs-accent2); border-bottom-color:var(--rs-accent2); }
+    .rs-vgrid .rs-fig--full{ grid-column:1/-1; }
+    .rs-vgrid .rs-fig--full .vid{ aspect-ratio:16/5; }
+    @media(prefers-reduced-motion:reduce){
+      .rs-scene-ct,.rs-scene-ws,.rs-ct__teal,.rs-ct__eik,.rs-ct__sweep,.rs-ct__flood,.rs-ws__flood,.rs-ws__line{ animation:none; }
+      .rs-scene-ct{ opacity:1; } .rs-scene-ws{ opacity:0; }
+      .rs-ct__teal,.rs-ct__eik{ clip-path:inset(0 0 0 0); }
+      .rs-ct__sweep,.rs-ct__flood{ opacity:0; }
+    }
+
+    .rs-strip{ margin-top:12px; border:1px solid var(--rs-line); background:#0a0c0c; }
+    .rs-strip svg{ display:block; width:100%; height:auto; }
+
+    .rs-vrow{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+    @media(max-width:620px){ .rs-vrow{ grid-template-columns:1fr; } }
+    .rs-vrow--zoom img{ cursor:pointer; }
+    .rs-zoom-btn{ position:absolute; top:8px; right:8px; z-index:10; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.18); color:#9fe6d6; border-radius:5px; padding:3px 8px; font-size:.68rem; letter-spacing:.05em; cursor:pointer; opacity:0; transition:opacity .18s; line-height:1.5; pointer-events:none; }
+    .rs-fig:hover .rs-zoom-btn{ opacity:1; pointer-events:auto; }
+    .rs-lb{ position:fixed; inset:0; background:rgba(0,0,0,0.94); display:none; align-items:center; justify-content:center; z-index:2000; padding:24px; }
+    .rs-lb.open{ display:flex; }
+    .rs-lb img{ max-width:94vw; max-height:90vh; object-fit:contain; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+    .rs-lb__close{ position:absolute; top:16px; right:22px; background:none; border:none; color:#fff; font-size:2.2rem; line-height:1; cursor:pointer; }
+
+    .rs-vsq{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rs-line); border:1px solid var(--rs-line); margin-top:14px; }
+    @media(max-width:620px){ .rs-vsq{ grid-template-columns:1fr; } }
+    .rs-vsq .rs-vcell{ background:var(--rs-panel); }
+    .rs-vsq .vid{ position:relative; aspect-ratio:8/5; overflow:hidden; }
+    .rs-vsq video{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; }
+
+    .rs-oq{ margin-top:16px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rs-line); border:1px solid var(--rs-line); }
+    @media(max-width:760px){ .rs-oq{ grid-template-columns:1fr; } }
+    .rs-oq__i{ background:var(--rs-panel); padding:15px 16px; }
+    .rs-oq__n{ font-size:.68rem; letter-spacing:.18em; color:var(--rs-accent); opacity:.85; margin-bottom:7px; }
+    .rs-oq__t{ font-size:.9rem; color:var(--rs-sec); line-height:1.55; margin:0; }
+
+    .rs-eq{ border-left:2px solid rgba(0,212,170,.4); background:rgba(0,212,170,.025); padding:12px 18px; margin:16px 0; max-width:560px; overflow-x:auto; }
+    .rs-eq__n{ font-size:.76rem; color:var(--rs-mut); line-height:1.55; margin-top:8px; }
+
+    .rs-key{ border-left:3px solid var(--rs-accent); background:rgba(0,212,170,.04); padding:14px 18px; margin:18px 0 0; }
+    .rs-key b{ color:var(--rs-accent); }
+    .rs-key p{ font-size:.84rem; color:var(--rs-sec); line-height:1.7; margin:0; }
+
+    .flow{ stroke-dasharray:5 6; animation:rsflow 1.6s linear infinite; }
+    @keyframes rsflow{ to{ stroke-dashoffset:-22; } }
+    .jiggle{ animation:rsjig 1.3s ease-in-out infinite; transform-origin:center; transform-box:fill-box; }
+    @keyframes rsjig{ 0%,100%{ transform:translate(0,0);} 25%{ transform:translate(2px,-3px);} 50%{ transform:translate(-2px,1px);} 75%{ transform:translate(1px,2px);} }
+    @media(prefers-reduced-motion:reduce){ .flow,.jiggle{ animation:none; } }
+
+    @media(max-width:760px){ .rs-mast{ padding:84px var(--rs-gut) 14px; } .rs-blk{ padding:30px var(--rs-gut); } }
+
+    /* ===== MONO FONT OVERRIDE (match index text-editor font) ===== */
+    body, body *{ font-family:var(--font-mono,'IBM Plex Mono',monospace) !important; }
+    .katex, .katex *{ font-family:revert !important; }
+
+    /* ===== MASTHEAD: relabel + smaller ===== */
+    .rs-mast__h{ font-size:clamp(1.55rem,4.2vw,2.7rem); font-weight:300; letter-spacing:.01em; text-align:center; }
+
+    /* ===== SWING-IN TRIAD (physics / instrument / biology) ===== */
+    .rs-triad{ display:grid; grid-template-columns:1fr 1fr 1fr; align-items:baseline; gap:14px; margin:24px 0 2px; }
+    .rs-triad__i{ font-size:clamp(1.05rem,3vw,2rem); font-weight:400; color:var(--rs-accent); line-height:1.05; white-space:nowrap; opacity:0; }
+    .rs-triad__i .d{ color:var(--rs-accent); margin-right:.3em; }
+    .rs-triad__i .o{ color:var(--rs-mut); font-size:.6em; letter-spacing:.05em; margin-left:.35em; }
+    .rs-triad__i--l{ text-align:left;   transform:translateX(-130%) rotate(-9deg); animation:swingIn .85s cubic-bezier(.2,.85,.2,1) .2s forwards; }
+    .rs-triad__i--c{ text-align:center; transform:translateX(-130%) rotate(-6deg); animation:swingIn .85s cubic-bezier(.2,.85,.2,1) .8s forwards; }
+    .rs-triad__i--r{ text-align:right;  transform:translateX(130%)  rotate(9deg);  animation:swingIn .85s cubic-bezier(.2,.85,.2,1) 1.4s forwards; }
+    @keyframes swingIn{ 0%{ opacity:0; } 55%{ opacity:1; transform:translateX(7%) rotate(2.5deg); } 100%{ opacity:1; transform:translateX(0) rotate(0); } }
+    @media(max-width:680px){ .rs-triad{ grid-template-columns:1fr; gap:8px; } .rs-triad__i,.rs-triad__i--l,.rs-triad__i--c,.rs-triad__i--r{ text-align:center; } }
+    @media(prefers-reduced-motion:reduce){ .rs-triad__i{ opacity:1 !important; transform:none !important; animation:none !important; } }
+
+    /* ===== CENTERED SECTION HEAD (now default in .rs-head/.rs-lede) ===== */
+
+    /* ===== REAL-IMAGE SCALE TILES + EXTRACT REVEAL ===== */
+    .rs-card--img{ position:relative; }
+    .rs-imgwrap{ position:relative; aspect-ratio:16/10; overflow:hidden; background:#070909; }
+    .rs-imgwrap img,.rs-imgwrap video,.rs-cell img{ position:absolute; inset:0; z-index:1; width:100%; height:100%; object-fit:cover; filter:grayscale(.18) contrast(1.05); display:block; }
+    .rs-cell img{ object-fit:cover; filter:none; }
+    .rs-imgwrap::after,.rs-cell::after{ content:attr(data-scale); position:absolute; inset:0; z-index:0; display:flex; align-items:center; justify-content:center; color:#33524b; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; background:#070909; }
+    .rs-cell::after{ font-size:.56rem; letter-spacing:.1em; }
+    .rs-cover{ position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(90deg,#061a17 0%,#04110e 100%); transform:translateX(0); }
+    .rs-cover::before{ content:''; position:absolute; top:0; right:-1px; bottom:0; width:2px; background:#3fe6cb; box-shadow:0 0 16px 3px rgba(0,212,170,.7); }
+    .rs-card--img.is-on .rs-cover{ animation:uncover 1.45s cubic-bezier(.65,0,.2,1) forwards; }
+    @keyframes uncover{ to{ transform:translateX(101%); } }
+
+    /* third panel: mosaic of scales, staggered uncover */
+    .rs-mosaic{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:3px; aspect-ratio:16/10; background:#0a0e0d; }
+    .rs-clab{ position:absolute; left:0; right:0; bottom:0; z-index:4; padding:8px 6px 6px; text-align:center; font-size:.58rem; line-height:1.25; letter-spacing:.03em; color:#cdeee4; background:linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,.55) 55%, transparent); pointer-events:none; opacity:0; transform:translateY(8px); transition:opacity .25s ease, transform .25s ease; }
+    .rs-cell:hover .rs-clab,.rs-cell:focus-within .rs-clab{ opacity:1; transform:translateY(0); }
+    .rs-cell img{ transition:filter .25s ease; }
+    .rs-cell:hover img{ filter:brightness(1.15) saturate(1.08); }
+    .rs-cell{ position:relative; overflow:hidden; background:#070909; }
+    .rs-card--img.is-on .rs-cell:nth-child(1) .rs-cover{ animation-delay:0s; }
+    .rs-card--img.is-on .rs-cell:nth-child(2) .rs-cover{ animation-delay:.16s; }
+    .rs-card--img.is-on .rs-cell:nth-child(3) .rs-cover{ animation-delay:.32s; }
+    .rs-card--img.is-on .rs-cell:nth-child(4) .rs-cover{ animation-delay:.48s; }
+    @media(prefers-reduced-motion:reduce){ .rs-cover{ display:none; } }
+    /* ===== THREAD-LINKED RESTRUCTURE ADDITIONS ===== */
+    .rs-blk, .rs-mast{ scroll-margin-top:80px; }
+
+    /* glance strip — mirrors the index 'threads of inquiry' tiles */
+    .rs-threads{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rs-line); border:1px solid var(--rs-line); margin-top:22px; }
+    @media(max-width:760px){ .rs-threads{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:460px){ .rs-threads{ grid-template-columns:1fr; } }
+    .rs-thread{ background:var(--rs-panel); padding:16px 18px 18px; text-decoration:none; display:block; transition:background .25s; }
+    .rs-thread:hover{ background:#0b1413; }
+    .rs-thread__n{ font-size:.62rem; letter-spacing:.22em; color:var(--rs-accent); opacity:.6; }
+    .rs-thread__t{ font-size:.96rem; color:var(--rs-sec); margin:9px 0 6px; line-height:1.35; }
+    .rs-thread__t .k{ color:var(--rs-accent); }
+    .rs-thread:hover .rs-thread__t .k{ color:var(--rs-accent2); }
+    .rs-thread__d{ font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rs-mut); margin:0; }
+
+    .rs-figfull{ margin-top:14px; }
+    .rs-note{ font-size:.9rem; color:var(--rs-sec); line-height:1.7; max-width:760px; margin:14px auto 0; text-align:center; }
+    .rs-note b{ color:#fff; font-weight:500; } .rs-note .hl{ color:var(--rs-accent); }
+
+    /* ===== DROPLET SECTION: brighter two-column, justified, columns aligned bottom-to-bottom ===== */
+    #droplets .rs-split{ align-items:start; gap:34px; }
+    /* text column fills the figure's height and pins its last line to the bottom edge,
+       so the prose block and the figure block end together (no trailing gap) */
+    #droplets .rs-droptext{ display:flex; flex-direction:column; justify-content:flex-start; gap:16px; }
+    #droplets .rs-droptext p{ margin:0; text-align:justify; color:#dcdcdc; font-size:.96rem; line-height:1.78; }
+    #droplets .rs-droptext p b{ color:#fff; font-weight:500; }
+    #droplets .rs-droptext p .hl{ color:var(--rs-accent2); }
+    @media(max-width:820px){ #droplets .rs-droptext{ justify-content:flex-start; } }
+
+    /* one continuous block: schematic on top, the two flow videos below it,
+       sharing the same vertical centre-line so the panels read as one figure */
+    .rs-dropfig{ border:1px solid var(--rs-line); background:var(--rs-panel); align-self:stretch; }
+    .rs-dropfig__svg{ border-bottom:1px solid var(--rs-line); }
+    .rs-dropfig__svg svg{ display:block; width:100%; height:auto; }
+    .rs-dropfig__vids{ display:grid; grid-template-columns:1fr 1fr; }
+    .rs-dropfig__vids .rs-vcell{ position:relative; display:flex; flex-direction:column; }
+    .rs-dropfig__vids .rs-vcell:first-child{ border-right:1px solid var(--rs-line); }
+    .rs-dropfig__vids .vid{ position:relative; aspect-ratio:8/5; overflow:hidden; background:#000; }
+    .rs-dropfig__vids video{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; }
+    .rs-dropfig .rs-cap{ border-top:1px solid var(--rs-line); }
+
+    /* ===== brighten the upper-section prose to match thread 1 ===== */
+    .rs-lede{ color:#dcdcdc; }
+    .rs-note{ color:#dcdcdc; }
+
+    /* ===== transition into the vapor thread ===== */
+    .rs-trans{ padding:18px var(--rs-gut) 18px; text-align:left; border-bottom:1px solid var(--rs-line); max-width:860px; margin:0 auto; }
+    .rs-trans__k{ font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--rs-accent); opacity:.85; margin-bottom:12px; text-align:center; display:block; }
+    .rs-trans p{ max-width:100%; margin:0; color:#d4d4d4; font-size:.95rem; line-height:1.72; }
+    .rs-trans p b{ color:#fff; font-weight:500; } .rs-trans p .hl{ color:var(--rs-accent2); }
+    .rs-trans__line{ width:1px; height:26px; margin:16px auto 0; background:linear-gradient(to bottom,var(--rs-accent),transparent); }
+
+    /* ===== vapor section: same justified, bottom-aligned two-column as thread 1 ===== */
+    #vapor .rs-split{ align-items:start; gap:34px; margin-top:18px; }
+    #vapor .rs-fig{ align-self:stretch; }
+    #vapor .rs-fig svg{ display:block; width:100%; height:auto; }
+    #vapor .rs-droptext{ display:flex; flex-direction:column; justify-content:flex-start; gap:16px; }
+    #vapor .rs-droptext p{ margin:0; text-align:justify; color:#dcdcdc; font-size:.96rem; line-height:1.78; }
+    #vapor .rs-droptext p b{ color:#fff; font-weight:500; }
+    #vapor .rs-droptext p .hl{ color:var(--rs-accent2); }
+    @media(max-width:820px){ #vapor .rs-droptext{ justify-content:flex-start; } }
+
+  
+    /* Section 1 prose: brighter + justified */
+    #self-assembly .rs-split p{ color:#ededed; text-align:justify; }
+    #self-assembly .rs-split p b{ color:#ffffff; }
+    /* match AI / CFD / active-matter body prose to the section-1 brightness */
+    #ai .rs-split p, #cfd .rs-split p, #active-matter .rs-split p{ color:#ededed; text-align:justify; }
+    #ai .rs-split p b, #cfd .rs-split p b, #active-matter .rs-split p b{ color:#ffffff; }
+    #self-assembly .rs-key p{ color:#ededed; }
+    #self-assembly .rs-oq__t{ color:#ededed; }
+    #self-assembly .rs-qlist{ margin-top:16px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    #self-assembly .rs-q{ border:1px solid var(--rs-line); border-left:2px solid rgba(0,212,170,.55); border-radius:4px; padding:15px 16px; background:var(--rs-panel); }
+    #self-assembly .rs-q .qn{ display:block; font-size:.72rem; letter-spacing:.2em; color:var(--rs-accent); margin-bottom:7px; }
+    #self-assembly .rs-q p{ font-size:.9rem; color:#ededed; line-height:1.5; margin:0; text-align:left; }
+    @media(max-width:760px){ #self-assembly .rs-qlist{ grid-template-columns:1fr; } }
+
+    /* ===== NUMBERED THREADS RENDER AS DETACHED CARDS ===== */
+    #self-assembly,#microfluidics,#ai,#cfd,#active-matter,#droplets,#vapor{
+      width:calc(100% - 2*var(--rs-gut));
+      max-width:1200px;
+      margin:22px auto;
+      padding:30px clamp(18px,3vw,40px);
+      background:linear-gradient(180deg,#080a0a,#050606);
+      border:1px solid var(--rs-line);
+      border-radius:14px;
+      box-shadow:0 20px 56px -34px rgba(0,212,170,.30);
+    }
+    @media(max-width:760px){
+      #self-assembly,#microfluidics,#ai,#cfd,#active-matter,#droplets,#vapor{
+        width:calc(100% - 2*clamp(10px,3vw,24px)); margin:16px auto; padding:24px clamp(14px,3vw,20px);
+      }
+    }
+
+    /* ===== WHOLE-CARD SCALE-IN POP (re-fires on every scroll-in, via JS) ===== */
+    .rs-reveal{ opacity:0; transform-origin:center top; will-change:transform,opacity; }
+    .rs-reveal.is-in{ animation:rsPop 1.15s cubic-bezier(.16,.84,.24,1) both; }
+    @keyframes rsPop{
+      0%{   opacity:0; transform:scale(.9)   translateY(46px); }
+      55%{  opacity:1; transform:scale(1.012) translateY(0); }
+      100%{ opacity:1; transform:scale(1)     translateY(0); }
+    }
+    @media(prefers-reduced-motion:reduce){
+      .rs-reveal{ opacity:1 !important; transform:none !important; animation:none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav__logo">Omkar <span>Hegde</span></a>
+  <ul class="nav__links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="journey.html">Journey</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Connect</a></li>
+  </ul>
+  <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
+</nav>
+<div class="nav__mobile" role="dialog" aria-label="Mobile navigation">
+  <button class="nav__mobile-close" aria-label="Close menu">&times;</button>
+  <a href="index.html">Home</a><a href="index.html#about">About</a>
+  <a href="research.html">Research</a><a href="publications.html">Publications</a>
+  <a href="journey.html">Journey</a><a href="blog.html">Blog</a>
+  <a href="contact.html">Connect</a>
+</div>
+
+<main class="rs">
+<!-- MASTHEAD -->
+<header class="rs-mast">
+  <div class="rs-mast__k">Matter Meets Motion</div>
+  <h1 class="rs-mast__h">Soft matter research</h1>
+  <div class="rs-triad" aria-label="physics first, instrument second, biology third">
+    <div class="rs-triad__i rs-triad__i--l"><span class="d">&middot;</span>physics<span class="o">first</span></div>
+    <div class="rs-triad__i rs-triad__i--c"><span class="d">&middot;</span>instrument<span class="o">second</span></div>
+    <div class="rs-triad__i rs-triad__i--r"><span class="d">&middot;</span>biology<span class="o">third</span></div>
+  </div>
+</header>
+
+<!-- 1. SOFT MATTER -->
+<section class="rs-blk" id="soft">
+  <div class="rs-head"><span class="rs-k">&middot; The field</span><h2 class="rs-h">What is <em>soft matter ?</em></h2></div>
+  <p class="rs-lede" style="text-align:justify;margin-bottom:18px">Matter that reorganizes under forces near thermal energy, <span style="color:#00d4aa">$k_BT \approx 4\ \mathrm{zJ}$</span>. Here, entropy, interfaces, confinement, and weak interactions compete with structure. Gels, foams, colloids, polymers, biofluids, drying drops, and cellular condensates live in this regime. They flow, jam, buckle, crystallize, phase separate, and <b>remember the path that made them</b>.</p>
+  <p class="rs-lede"><span style="color:#00d4aa">From nanometres to capillary length scales.</span></p>
+  <div class="rs-trio">
+    <div class="rs-card rs-card--img" data-reveal>
+      <div class="rs-imgwrap" data-scale="~1 nm" data-v>
+        <video muted loop playsinline preload="metadata"><source src="assets/research/scale/01-molecular.mp4" type="video/mp4"></video>
+        <div class="rs-cover"></div>
+      </div>
+      <div class="rs-card__b"><p class="rs-card__t">Molecular scale</p><p class="rs-card__d">DNA, proteins, polymers. About 1 nm.</p></div>
+    </div>
+    <div class="rs-card rs-card--img" data-reveal>
+      <div class="rs-imgwrap" data-scale="1&ndash;10 &mu;m" data-v>
+        <video muted loop playsinline preload="metadata"><source src="assets/research/scale/02-colloid.mp4" type="video/mp4"></video>
+        <div class="rs-cover"></div>
+      </div>
+      <div class="rs-card__b"><p class="rs-card__t">Colloid, cell</p><p class="rs-card__d">Particles, cells. 1 to 10 &mu;m.</p></div>
+    </div>
+    <div class="rs-card rs-card--img" data-reveal>
+      <div class="rs-mosaic">
+        <div class="rs-cell" data-scale="staphylococcus"><img src="assets/research/scale/m1.jpg" alt="Staphylococcus bacteria in a dried droplet (SEM)" loading="lazy" style="object-fit:contain" onerror="this.style.display='none'"><div class="rs-cover"></div><span class="rs-clab">Staphylococcus in a droplet</span></div>
+        <div class="rs-cell" data-scale="microfluidics"><img src="assets/research/scale/m2.jpg" alt="Multiplexed microfluidic device" loading="lazy" style="object-fit:contain" onerror="this.style.display='none'"><div class="rs-cover"></div><span class="rs-clab">Multiplexed microfluidic device</span></div>
+        <div class="rs-cell" data-scale="liquid bridge"><img src="assets/research/scale/m3.jpg" alt="Deposit from a liquid bridge" loading="lazy" style="object-fit:contain" onerror="this.style.display='none'"><div class="rs-cover"></div><span class="rs-clab">Deposit from a liquid bridge</span></div>
+        <div class="rs-cell" data-scale="blood drop"><img src="assets/research/scale/m4.jpg" alt="Dried blood droplet" loading="lazy" style="object-fit:contain" onerror="this.style.display='none'"><div class="rs-cover"></div><span class="rs-clab">Dried blood droplet</span></div>
+      </div>
+      <div class="rs-card__b"><p class="rs-card__t">From the lab</p><p class="rs-card__d">Bacteria (staphylococcus) in a droplet, multiplexed microfluidic device, deposit from a liquid bridge, dried blood droplet.</p></div>
+    </div>
+  </div>
+
+  <div class="rs-strip">
+    <svg viewBox="0 0 1200 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Length scale axis">
+      <rect width="1200" height="56" fill="#0a0c0c"/>
+      <line x1="60" y1="32" x2="1140" y2="32" stroke="#1f2424" stroke-width="2"/>
+      <g font-size="11" text-anchor="middle">
+        <g><line x1="130" y1="26" x2="130" y2="38" stroke="#00d4aa"/><text x="130" y="18" fill="#9fe6d6">~ <tspan font-style="italic">o</tspan>(1) nm</text><text x="130" y="50" fill="#6f6f6f" font-size="9">molecule</text></g>
+        <g><line x1="400" y1="26" x2="400" y2="38" stroke="#00d4aa"/><text x="400" y="18" fill="#9fe6d6">~ <tspan font-style="italic">o</tspan>(100) nm</text><text x="400" y="50" fill="#6f6f6f" font-size="9">nanoparticle</text></g>
+        <g><line x1="660" y1="26" x2="660" y2="38" stroke="#00d4aa"/><text x="660" y="18" fill="#9fe6d6">~ <tspan font-style="italic">o</tspan>(1) &mu;m</text><text x="660" y="50" fill="#6f6f6f" font-size="9">colloid, cell</text></g>
+        <g><line x1="920" y1="26" x2="920" y2="38" stroke="#00d4aa"/><text x="920" y="18" fill="#9fe6d6">~ <tspan font-style="italic">o</tspan>(100) &mu;m</text><text x="920" y="50" fill="#6f6f6f" font-size="9">droplet, channel</text></g>
+        <g><line x1="1100" y1="26" x2="1100" y2="38" stroke="#00d4aa"/><text x="1100" y="18" fill="#9fe6d6">~ <tspan font-style="italic">o</tspan>(10) mm</text><text x="1100" y="50" fill="#6f6f6f" font-size="9">capillary length</text></g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+
+<!-- 2. WHY IT MATTERS -->
+<section class="rs-blk" id="why">
+  <div class="rs-head"><span class="rs-k">&middot; Why it matters</span><h2 class="rs-h">Why soft matter, and where the <em>edge</em> is</h2></div>
+  <p class="rs-lede" style="text-align:justify;margin-bottom:18px">Because softness turns weak forces into <b>structure</b>, <b>motion</b>, and <b>memory</b>. My systems run from drying droplets to DNA, RNA, proteins, and their condensates, and the edge is always the same: how to <b>program rearrangement</b>, and how to <b>read the structure it leaves behind</b>.</p>
+  <p class="rs-note" style="text-align:center"><span style="color:#00d4aa">Six threads run through the work that follows.</span></p>
+  
+  <div class="rs-threads">
+    <a class="rs-thread" href="#self-assembly"><div class="rs-thread__n">01</div><p class="rs-thread__t"><span class="k">Order</span> that organizes itself.</p><p class="rs-thread__d">Self-assembly</p></a>
+    <a class="rs-thread" href="#microfluidics"><div class="rs-thread__n">02</div><p class="rs-thread__t"><span class="k">Chips</span> that route signals.</p><p class="rs-thread__d">Microfluidics</p></a>
+    <a class="rs-thread" href="#ai"><div class="rs-thread__n">03</div><p class="rs-thread__t"><span class="k">AI</span> that reads what the eye misses.</p><p class="rs-thread__d">AI &amp; imaging</p></a>
+    <a class="rs-thread" href="#cfd"><div class="rs-thread__n">04</div><p class="rs-thread__t"><span class="k">Simulations</span> that precede the device.</p><p class="rs-thread__d">Computational fluid dynamics</p></a>
+    <a class="rs-thread" href="#active-matter"><div class="rs-thread__n">05</div><p class="rs-thread__t"><span class="k">Bacteria</span> that organize as they dry.</p><p class="rs-thread__d">Bacterial fluid interactions</p></a>
+    <a class="rs-thread" href="#droplets"><div class="rs-thread__n">06</div><p class="rs-thread__t"><span class="k">Droplets</span> that organize matter.</p><p class="rs-thread__d">Droplet physics</p></a>
+  </div>
+</section>
+
+<!-- THREAD 1: SELF-ASSEMBLY -->
+<section class="rs-blk" id="self-assembly">
+  <div class="rs-head"><span class="rs-k">01 &middot; Self-assembly</span><h2 class="rs-h">Order that <em>organizes itself</em></h2></div>
+
+  <div class="rs-split" style="margin-top:16px">
+    <div class="rs-fig">
+      <img src="assets/research/self-assembly/order-organizes-itself.png" data-zoom alt="Single-stranded DNA mixed with magnesium chloride salt buffer folds into four-arm nanostars; the stars connect through sticky ends into a network that condenses into a biomolecular condensate with coexisting dense and dilute phases" style="display:block;width:100%;height:auto;cursor:pointer;">
+      <div class="rs-cap">strands, nanostars, condensate <span>self-assembly</span></div>
+    </div>
+    <div>
+      <p>DNA, RNA, and proteins are <span class="hl">multivalent</span>, each able to grab several partners at once, so they organize into larger structures that carry a function. We want to study that, and to harness it, taking control of self-assembly ourselves.</p>
+      <p>For example, take DNA. It's multivalent and naturally sticky, and its bases pair up by simple, predictable rules. Get the sequence right and you can fold it into almost any tiny shape you want.</p>
+      <p>Our shape is a four-armed star, a <b>nanostar</b>, with a sticky tip on each arm. Throw a crowd of them together and they grab arm to arm, gathering into tiny droplets. Each droplet is a <span class="hl">condensate</span>, a concentrated blob of DNA suspended in the water around it.</p>
+    </div>
+  </div>
+
+  <!-- reentrant video, then question boxes below -->
+  <div class="rs-split" style="margin-top:18px;align-items:center">
+    <div>
+      <p>In the adjacent video, the DNA strands are loaded into a capillary along with the buffer and salts. They self-assemble as designed and form condensates at room temperature. The condensate and the surrounding water constantly exchange molecules, a back-and-forth process that remains steady at room temperature.</p>
+      <p>As you change the temperature, say, by heating the sample, the droplets melt, just as you would expect when bonds break. But keep heating, and they come back, reforming at a temperature where they have no business existing. <a href="https://doi.org/10.1103/PhysRevLett.132.208401" style="color:#3fe6cb;text-decoration:underline">Read why in our PRL.</a></p>
+    </div>
+    <div class="rs-fig" data-v>
+      <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#000">
+        <video muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <source src="assets/index/video/DNA condensates.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="rs-cap">DNA condensates in a capillary <span>room temperature</span></div>
+    </div>
+  </div>
+
+  <p class="rs-note" style="margin-top:22px"><span class="hl">These condensates are programmable. Three questions drive the work:</span></p>
+  <div class="rs-qlist">
+    <div class="rs-q"><span class="qn">Q1</span><p>Can a condensate capture and concentrate one target sequence out of a crude mixture, lifting it above the limit of detection?</p></div>
+    <div class="rs-q"><span class="qn">Q2</span><p>Can it be switched across its phase boundary on cue, assembling or dissolving on command?</p></div>
+    <div class="rs-q"><span class="qn">Q3</span><p>Can the same condensate be driven from liquid to solid, locking the assembly in place?</p></div>
+  </div>
+</section>
+
+<!-- THREAD 2: MICROFLUIDICS -->
+<section class="rs-blk" id="microfluidics">
+  <div class="rs-head"><span class="rs-k">02 &middot; Microfluidics</span><h2 class="rs-h">Chips that <em>route signals</em></h2></div>
+  <p class="rs-lede" style="text-align:justify;margin-bottom:6px">We answer those three questions in hardware, on chips of glass and PDMS. Droplet generators split a sample into thousands of identical picolitre drops. Multilayer valve chips route and switch fluid through an addressable grid of chambers.</p>
+
+  <!-- Droplet generator: schematic, video, capillary in one row -->
+  <p style="max-width:860px;margin:12px auto 0;color:var(--rs-text);font-size:.95rem;line-height:1.75;text-align:justify">First, <b style="color:#fff">search</b>. A droplet generator pinches the DNA sample with oil at a cross-junction, sealing one chemistry inside each drop, so thousands of compositions form, get read in parallel, and are stored in a capillary.</p>
+  <div class="rs-trio">
+    <div class="rs-fig"><div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:#000"><img src="assets/research/microfluidics/droplet-generator-schematic.png" alt="Cross-junction droplet generator: salt buffer, water, and DNA streams meet oil from side channels and break into monodisperse droplets" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></div><div class="rs-cap">aqueous stream meets oil <span>cross-junction</span></div></div>
+    <div class="rs-fig" data-v><div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:#000"><video muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"><source src="assets/index/video/Microfluidic droplets.mp4" type="video/mp4"></video></div><div class="rs-cap">flow-focusing junction <span>drops forming</span></div></div>
+    <div class="rs-fig"><div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:#000"><img src="assets/research/microfluidics/dna-droplets-capillary.png" alt="DNA droplets stored in a square capillary" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div><div class="rs-cap">stored in a square capillary <span>brightfield</span></div></div>
+  </div>
+
+  <!-- Multilayer multiplexed device: two figures, two animations -->
+  <p style="max-width:860px;margin:18px auto 0;color:var(--rs-text);font-size:.95rem;line-height:1.75;text-align:justify">Then, <b style="color:#fff">control</b>. In a valve chip, pressurising a control line collapses a thin membrane onto the flow channel below and closes it. An array of these valves addresses each chamber in the grid, holds a different condition in every one, and switches it on cue. <a class="rs-ref" href="https://www.biorxiv.org/content/10.64898/2026.01.12.699088v2" target="_blank" rel="noopener">preprint</a></p>
+  <div class="rs-vrow rs-vrow--zoom" style="grid-template-columns:1fr 1fr">
+    <div class="rs-fig"><div style="position:relative;aspect-ratio:16/5;overflow:hidden;background:#000"><img src="assets/research/microfluidics/valve-operation-figure.png" alt="Valve operation: push-down and push-up membrane valves shown open and closed, with square-to-rounded channel profiles" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></div><div class="rs-cap">push-down and push-up membrane valves <span>open / closed</span></div></div>
+    <div class="rs-fig"><div style="position:relative;aspect-ratio:16/5;overflow:hidden;background:#000"><img src="assets/research/microfluidics/multiplexed-device.png" alt="Multiplexed microfluidic device with red flow channels, eight control lines, and an addressable array of chambers between one inlet and one outlet" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></div><div class="rs-cap">addressable chamber array, 8 control lines <span>multiplexed chip</span></div></div>
+  </div>
+  <div class="rs-vrow rs-vrow--zoom" style="grid-template-columns:1fr 1fr">
+    <div class="rs-fig"><div style="position:relative;aspect-ratio:16/5;overflow:hidden;background:#000"><img src="assets/research/microfluidics/valve-operation.gif" alt="Animation of a push-down membrane valve closing and reopening" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></div><div class="rs-cap">membrane deflects to seal the channel <span>valve actuation</span></div></div>
+    <div class="rs-fig"><div style="position:relative;aspect-ratio:16/5;overflow:hidden;background:#000"><img src="assets/research/microfluidics/device-flow.gif" alt="Animation of medium routed through the chambers of the multiplexed device" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></div><div class="rs-cap">medium routed through the array <span>device flow</span></div></div>
+  </div>
+</section>
+
+<!-- THREAD 3: AI & IMAGING -->
+<section class="rs-blk" id="ai">
+  <div class="rs-head"><span class="rs-k">03 &middot; AI &amp; imaging</span><h2 class="rs-h">Reading what the <em>eye misses</em></h2></div>
+  <p class="rs-lede" style="text-align:justify;margin-bottom:6px">Some structure is too fine, or too high-dimensional, to score by hand. We train models to read it.</p>
+
+  <div class="rs-split">
+    <div class="rs-fig">
+      <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A dried blood droplet's crack pattern feeds a convolutional neural network that classifies the sample as healthy or infected">
+        <defs><marker id="cn" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#00d4aa"/></marker><clipPath id="dropclip"><circle cx="78" cy="122" r="46"/></clipPath></defs>
+        <circle cx="78" cy="122" r="46" fill="#0a1715"/>
+        <image href="assets/research/ai/dried-drop-real.jpg" x="32" y="76" width="92" height="92" clip-path="url(#dropclip)" preserveAspectRatio="xMidYMid slice"/>
+        <circle cx="78" cy="122" r="46" fill="none" stroke="#3fe6cb" stroke-width="3.4" opacity=".55"/>
+        <circle cx="78" cy="122" r="46" fill="none" stroke="#2bbfa6" stroke-width="1.2"/>
+        <text x="78" y="184" text-anchor="middle" fill="#9fe6d6" font-size="9">dried blood drop</text>
+        <text x="78" y="56" text-anchor="middle" fill="#9bb0aa" font-size="8.5">infection alters the pattern</text>
+        <line x1="130" y1="122" x2="160" y2="122" stroke="#00d4aa" stroke-width="1.4" marker-end="url(#cn)"/>
+        <g stroke="#2bbfa6" stroke-width="1">
+          <rect x="186" y="96" width="54" height="54" fill="#0c1a18"/>
+          <rect x="180" y="102" width="54" height="54" fill="#0e2220"/>
+          <rect x="174" y="108" width="54" height="54" fill="#103029" fill-opacity=".8"/>
+        </g>
+        <line x1="236" y1="122" x2="262" y2="122" stroke="#00d4aa" stroke-width="1.4" marker-end="url(#cn)"/>
+        <g stroke="#2bbfa6" stroke-width="1">
+          <rect x="286" y="104" width="38" height="38" fill="#0c1a18"/>
+          <rect x="281" y="109" width="38" height="38" fill="#0e2220"/>
+          <rect x="276" y="114" width="38" height="38" fill="#103029" fill-opacity=".8"/>
+          <rect x="271" y="119" width="38" height="38" fill="#12382f" fill-opacity=".7"/>
+        </g>
+        <line x1="320" y1="122" x2="344" y2="122" stroke="#00d4aa" stroke-width="1.4" marker-end="url(#cn)"/>
+        <g stroke="#2bbfa6" stroke-width="1">
+          <rect x="360" y="110" width="24" height="24" fill="#0c1a18"/>
+          <rect x="356" y="114" width="24" height="24" fill="#0e2220"/>
+          <rect x="352" y="118" width="24" height="24" fill="#103029" fill-opacity=".8"/>
+          <rect x="348" y="122" width="24" height="24" fill="#12382f" fill-opacity=".7"/>
+        </g>
+        <text x="270" y="186" text-anchor="middle" fill="#9bb0aa" font-size="8.5">convolution + pooling</text>
+        <line x1="384" y1="122" x2="408" y2="122" stroke="#00d4aa" stroke-width="1.4" marker-end="url(#cn)"/>
+        <text x="470" y="92" text-anchor="middle" fill="#9fe6d6" font-size="9">diagnosis</text>
+        <text x="418" y="112" fill="#9bb0aa" font-size="8.5">healthy</text>
+        <rect x="418" y="116" width="40" height="11" fill="#163a33" stroke="#2bbfa6" stroke-width=".8"/>
+        <text x="418" y="142" fill="#cdeee4" font-size="8.5">infected</text>
+        <rect x="418" y="146" width="116" height="11" fill="#0c2424" stroke="#3fe6cb" stroke-width="1.2"/>
+        <rect x="418" y="146" width="98" height="11" fill="#00d4aa" fill-opacity=".55"/>
+        <text x="470" y="178" text-anchor="middle" fill="#00d4aa" font-size="9">probability per class</text>
+      </svg>
+      <div class="rs-cap">dried-drop pattern in, class probability out <span>convolutional network</span></div>
+    </div>
+    <div>
+      <p>A drying drop of blood leaves a pattern of cracks and deposits, and infection shifts that pattern in ways that are reproducible but hard to quantify by eye.</p>
+      <p>We feed the dried-drop images to a <b>convolutional neural network</b> that learns the features separating healthy from infected samples and returns a class probability. <a class="rs-ref" href="https://doi.org/10.1007/978-981-96-8602-5_33" target="_blank" rel="noopener">Springer 2025</a></p>
+    </div>
+  </div>
+  <div class="rs-trio">
+    <div class="rs-fig rs-loop" data-base="assets/research/ai/blood-healthy" data-alt="Dried healthy blood droplet pattern"><div class="rs-loop__stack"></div><div class="rs-cap">healthy <span>dried drop</span></div></div>
+    <div class="rs-fig rs-loop" data-base="assets/research/ai/blood-infected" data-alt="Dried infected blood droplet pattern"><div class="rs-loop__stack"></div><div class="rs-cap">infected <span>dried drop</span></div></div>
+    <div class="rs-fig rs-loop" data-base="assets/research/ai/sem-drop" data-alt="SEM of a dried blood droplet deposit"><div class="rs-loop__stack"></div><div class="rs-cap">deposit <span>SEM</span></div></div>
+  </div>
+
+  <p class="rs-note" style="margin-top:18px"><span class="hl">The eye misses the inside, too.</span></p>
+  <div class="rs-split" style="margin-top:14px">
+    <div class="rs-fig">
+      <div class="rs-ctcyc" style="aspect-ratio:5/2">
+        <div class="rs-ctcyc__scene rs-scene-ct">
+          <img class="rs-ct__base" src="assets/index/ai/ct_slice.png" alt="X-ray micro-CT slice of a porous polymer sample" loading="lazy">
+          <img class="rs-ct__teal" src="assets/index/ai/ct_teal.png" alt="" loading="lazy">
+          <img class="rs-ct__eik" src="assets/index/ai/ct_eikonal.png" alt="" loading="lazy">
+          <div class="rs-ct__sweep"></div>
+          <div class="rs-ct__flood"></div>
+        </div>
+        <div class="rs-ctcyc__scene rs-scene-ws">
+          <img class="rs-ws__base" src="assets/research/ai/watershed-ct.png" alt="Watershed-segmented pore basins on a micro-CT slice" loading="lazy">
+          <img class="rs-ws__flood" src="assets/research/ai/watershed-ct.png" alt="" loading="lazy">
+          <div class="rs-ws__line"></div>
+        </div>
+      </div>
+      <div class="rs-cap">segment, flood, then watershed the pore space <span>micro-CT</span></div>
+    </div>
+    <div>
+      <p>What controls transport through a porous material, how readily a fluid or solute crosses it, lives in a pore network the eye never reaches. X-ray micro-CT scans the porous PDMS I build and returns it as a stack of grey slices.</p>
+      <p>We segment the pore space and read off the <span class="hl">porosity</span>, whether the pores <span class="hl">percolate</span> across the sample, and how <span class="hl">tortuous</span> the paths are, with a watershed step separating touching pores so each one can be measured on its own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THREAD 4: CFD -->
+<section class="rs-blk" id="cfd">
+  <div class="rs-head"><span class="rs-k">04 &middot; Computational fluid dynamics</span><h2 class="rs-h">Fields an experiment can't <em>reach</em></h2></div>
+  <p class="rs-lede" style="text-align:center;margin-bottom:6px">We compute the flow and concentration fields experiments cannot easily resolve, from inside a drying drop to a full device.</p>
+
+  <p style="max-width:860px;margin:8px auto 0;color:#ededed;font-size:.95rem;line-height:1.75;text-align:justify">In drying drops we solve the coupled evaporation, flow, and <span class="hl">solute transport</span> to see where material ends up, so a mechanism can be tested before the experiment. At device scale we model the flow through microfluidic channels before they are fabricated.</p>
+  <p style="max-width:860px;margin:10px auto 0;color:#ededed;font-size:.95rem;line-height:1.75;text-align:justify">In my Master's I modelled an <b style="color:#fff">evacuated-tube solar water heater</b> using a finite-volume Boussinesq treatment of buoyancy to predict the natural-convection loop and the outlet temperature. We use <b style="color:#fff">ANSYS Fluent</b> and <b style="color:#fff">COMSOL</b> for most cases, with OpenFOAM for the larger ones.</p>
+  <div class="rs-vrow">
+    <div class="rs-fig rs-loop" data-base="assets/research/cfd/cfd-sim" data-alt="CFD concentration field around drying droplets at varying tube-length ratios"><div class="rs-loop__stack" style="aspect-ratio:8/5"></div><div class="rs-cap">concentration field, drying drops <span>CFD</span></div></div>
+    <div class="rs-fig"><img src="assets/research/cfd/etswh-cfd.gif" alt="CFD temperature contour of an evacuated-tube solar water heater, with a flow pulse travelling up the tube" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:contain" onerror="this.style.minHeight='120px';this.style.opacity='.25'"><div class="rs-cap">temperature field, flow rising in the tube <span>CFD</span></div></div>
+  </div>
+</section>
+
+<!-- THREAD 5: ACTIVE MATTER -->
+<section class="rs-blk" id="active-matter">
+  <div class="rs-head"><span class="rs-k">05 &middot; Bacterial fluid interactions</span><h2 class="rs-h">Bacteria that <em>organize as they dry</em></h2></div>
+  <p class="rs-lede" style="text-align:center;margin-bottom:6px">Living particles assemble too, and drying forces their hand.</p>
+
+  <p style="max-width:860px;margin:8px auto 0;color:#ededed;font-size:.95rem;line-height:1.75;text-align:justify">A drop laden with bacteria dries like any other, an outward flow sweeping cells toward the pinned edge. There the receding interface and capillary forces <b style="color:#fff">crowd and squeeze</b> the rod-shaped cells, here <i>Klebsiella pneumoniae</i>, into dense, aligned packings. The dried deposit records how the cells were pushed together. <a class="rs-ref" href="https://doi.org/10.1016/j.jcis.2022.09.100" target="_blank" rel="noopener">JCIS 2023</a></p>
+  <div class="rs-vrow" style="max-width:980px;margin:16px auto 0">
+    <div class="rs-fig" data-v><div class="vid" style="position:relative;aspect-ratio:8/5;overflow:hidden;background:#000"><video muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"><source src="assets/index/video/Bacterial motion.mp4" type="video/mp4"></video></div><div class="rs-cap">bacteria in motion <span>live imaging</span></div></div>
+    <div class="rs-fig rs-loop" data-base="assets/research/active-matter/dried-bacteria" data-alt="Dried bacterial packing imaged by AFM and SEM"><div class="rs-loop__stack" style="aspect-ratio:8/5"></div><div class="rs-cap">dried packing, AFM and SEM <span>packing</span></div></div>
+  </div>
+</section>
+
+<!-- THREAD 6: DROPLET PHYSICS -->
+<section class="rs-blk" id="droplets">
+  <div class="rs-head"><span class="rs-k">06 &middot; Droplet physics</span><h2 class="rs-h">A drying droplet is a <em>flow engine</em></h2></div>
+
+  <div class="rs-split">
+
+    <!-- LEFT: one continuous figure — schematic on top, flow visualizations below, shared centre-line -->
+    <div class="rs-dropfig">
+      <div class="rs-dropfig__svg">
+    <svg viewBox="-56 10 652 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Evaporation flux and internal flow, thin hydrophilic cap versus tall hydrophobic cap">
+        <defs>
+          <marker id="fa" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#00d4aa"/></marker>
+          <marker id="fb" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#3fe6cb"/></marker>
+        </defs>
+        <rect width="540" height="256" fill="none"/>
+        <line x1="270" y1="10" x2="270" y2="220" stroke="#00d4aa" stroke-opacity=".32" stroke-width="1"/>
+
+        <!-- HYDROPHILIC : thin cap, edge flux (Deegan) -->
+        <text x="135" y="30" text-anchor="middle" fill="#9fe6d6" font-size="11">hydrophilic</text>
+        <text x="135" y="44" text-anchor="middle" fill="#93a8a2" font-size="9">&theta; &lt; 90&deg;</text>
+        <g transform="translate(0,-22)">
+        <rect x="40" y="210" width="190" height="3" fill="#1d1d1d"/>
+        <path d="M45 210 a90 34 0 0 1 180 0 Z" fill="#0c2424" stroke="#2bbfa6" stroke-width="1.3"/>
+        <g stroke="#00d4aa" fill="none">
+          <path d="M50 199 l-8 -38" stroke-width="2.1" marker-end="url(#fa)"/>
+          <path d="M72 186 l-6 -31" stroke-width="1.8" marker-end="url(#fa)"/>
+          <path d="M94 180 l-3 -24" stroke-width="1.5" marker-end="url(#fa)"/>
+          <path d="M116 177 l-1 -16" stroke-width="1.2" marker-end="url(#fa)"/>
+          <path d="M135 176 l0 -10" stroke-width=".85" marker-end="url(#fa)"/>
+          <path d="M154 177 l1 -16" stroke-width="1.2" marker-end="url(#fa)"/>
+          <path d="M176 180 l3 -24" stroke-width="1.5" marker-end="url(#fa)"/>
+          <path d="M198 186 l6 -31" stroke-width="1.8" marker-end="url(#fa)"/>
+          <path d="M220 199 l8 -38" stroke-width="2.1" marker-end="url(#fa)"/>
+        </g>
+        <text x="78" y="158" fill="#9fe6d6" font-size="9" font-style="italic">J</text>
+        <g stroke="#3fe6cb" stroke-width="1.4" fill="none">
+          <path class="flow" d="M135 204 H212" marker-end="url(#fb)"/>
+          <path class="flow" d="M135 204 H58" marker-end="url(#fb)"/>
+        </g>
+        <text x="135" y="200" text-anchor="middle" fill="#3fe6cb" font-size="9" font-style="italic">v&#773;</text>
+        <g fill="#1f8f7c"><circle cx="51" cy="207" r="1.7"/><circle cx="56" cy="207" r="1.7"/><circle cx="61" cy="207" r="1.7"/><circle cx="53" cy="203" r="1.7"/><circle cx="58" cy="203" r="1.7"/><circle cx="219" cy="207" r="1.7"/><circle cx="214" cy="207" r="1.7"/><circle cx="209" cy="207" r="1.7"/><circle cx="217" cy="203" r="1.7"/><circle cx="212" cy="203" r="1.7"/></g>
+        <text x="135" y="228" text-anchor="middle" fill="#00d4aa" font-size="9">flux peaks at the edge</text>
+        <text x="135" y="238" text-anchor="middle" fill="#9bb0aa" font-size="8">outward flow feeds the rim &middot; coffee ring</text>
+        </g>
+
+        <!-- HYDROPHOBIC : tall cap, apex flux, recirculation, sediment -->
+        <text x="405" y="30" text-anchor="middle" fill="#9fe6d6" font-size="11">hydrophobic</text>
+        <text x="405" y="44" text-anchor="middle" fill="#93a8a2" font-size="9">&theta; &gt; 90&deg;</text>
+        <g transform="translate(0,-22)">
+        <path d="M308 206 A100 100 0 1 1 502 206" fill="none" stroke="#00d4aa" stroke-width=".8" stroke-dasharray="5 5" opacity=".3"/>
+        <text x="503" y="120" fill="#7fa097" font-size="8">c&#8734;</text>
+        <rect x="318" y="210" width="174" height="3" fill="#1d1d1d"/>
+        <path d="M342 210 a70 70 0 1 1 126 0 Z" fill="#0c2424" stroke="#2bbfa6" stroke-width="1.3"/>
+        <g stroke="#00d4aa" fill="none">
+          <path d="M405 110 l0 -34" stroke-width="2.4" marker-end="url(#fa)"/>
+          <path d="M435 117 l14 -30" stroke-width="2.3" marker-end="url(#fa)"/>
+          <path d="M375 117 l-14 -30" stroke-width="2.3" marker-end="url(#fa)"/>
+          <path d="M459 135 l23 -19" stroke-width="2.1" marker-end="url(#fa)"/>
+          <path d="M351 135 l-23 -19" stroke-width="2.1" marker-end="url(#fa)"/>
+          <path d="M473 162 l24 -6" stroke-width="1.85" marker-end="url(#fa)"/>
+          <path d="M337 162 l-24 -6" stroke-width="1.85" marker-end="url(#fa)"/>
+          <path d="M474 192 l19 3" stroke-width="1.55" marker-end="url(#fa)"/>
+          <path d="M336 192 l-19 3" stroke-width="1.55" marker-end="url(#fa)"/>
+        </g>
+        <g stroke="#3fe6cb" stroke-width="1.6" fill="none">
+          <path d="M405 200 l0 -18" marker-end="url(#fb)"/>
+          <path d="M405 175 l0 -18" marker-end="url(#fb)"/>
+          <path d="M405 150 l0 -18" marker-end="url(#fb)"/>
+        </g>
+        <g stroke="#3fe6cb" stroke-width="1.3" fill="none" stroke-dasharray="4 3">
+          <path d="M405 124 C 448 132, 458 178, 438 202" marker-end="url(#fb)"/>
+          <path d="M405 124 C 362 132, 352 178, 372 202" marker-end="url(#fb)"/>
+        </g>
+        <g fill="#1f8f7c"><circle cx="350" cy="203" r="2"/><circle cx="360" cy="205" r="2"/><circle cx="371" cy="204" r="2"/><circle cx="383" cy="206" r="2"/><circle cx="396" cy="204" r="2"/><circle cx="408" cy="206" r="2"/><circle cx="419" cy="204" r="2"/><circle cx="431" cy="205" r="2"/><circle cx="442" cy="203" r="2"/><circle cx="454" cy="205" r="2"/><circle cx="364" cy="200" r="2"/><circle cx="448" cy="199" r="2"/></g>
+        <text x="405" y="228" text-anchor="middle" fill="#00d4aa" font-size="9">flux peaks at the apex</text>
+        <text x="405" y="238" text-anchor="middle" fill="#9bb0aa" font-size="8">up the axis, down the rim &middot; double toroid + sediment</text>
+        </g>
+      </svg>
+      </div><!-- /.rs-dropfig__svg -->
+      <div class="rs-dropfig__vids">
+        <div class="rs-vcell" data-v>
+          <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/videos/drop-hydrophilic.mp4" type="video/mp4"></video></div>
+          <div class="rs-cap">hydrophilic &middot; outward flow <span>top view</span></div>
+        </div>
+        <div class="rs-vcell" data-v>
+          <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/index/video/Droplet%20flow.mp4" type="video/mp4"></video></div>
+          <div class="rs-cap">hydrophobic &middot; recirculation <span>side view</span></div>
+        </div>
+      </div>
+    </div><!-- /.rs-dropfig -->
+
+    <!-- RIGHT: text -->
+    <div class="rs-droptext">
+      <p>As a drop evaporates, the liquid it loses at the surface is replaced from within, which drives a steady internal flow. Fluorescent tracer particles tracked under a microscope make that flow visible, as in the two videos.</p>
+      <p>The flow follows the evaporation. In the hydrophilic drop on the left, drying is fastest at the pinned edge, so liquid moves outward and carries particles to the rim as a <span class="hl">coffee-ring</span> stain. In the hydrophobic drop on the right, drying is fastest at the apex, and the gradients this sets up drive a <span class="hl">recirculation</span> that gathers particles at the centre. The dried deposit records the flow, which we work to read and to steer.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<section class="rs-trans">
+  <div class="rs-trans__k">Two drops, coupled through vapour</div>
+  <p>On its own, a drop's internal flow is near ten micrometres per second, driven by its own evaporation and impossible to steer. Place a volatile drop alongside and its vapour adsorbs on the water surface, creating a surface-tension gradient that <b>drives a Marangoni flow</b> three orders faster.</p>
+  <div class="rs-trans__line" aria-hidden="true"></div>
+</section>
+
+<!-- THREAD: VAPOR-MEDIATED INTERACTIONS -->
+<section class="rs-blk" id="vapor">
+  <div class="rs-head"><span class="rs-k">06 &middot; Droplet physics &middot; steering the flow</span><h2 class="rs-h">Drops that talk through <em>vapor</em></h2></div>
+
+  <div class="rs-split">
+
+    <!-- LEFT: schematic -->
+    <div class="rs-fig">
+      <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A volatile ethanol droplet beside a water droplet sets an asymmetric vapor field, preferential adsorption on the near side, a surface-tension gradient, and a solutal Marangoni recirculation">
+        <defs>
+          <marker id="va" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#00d4aa"/></marker>
+          <marker id="vb" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#3fe6cb"/></marker>
+        </defs>
+
+        <rect x="70" y="205" width="430" height="3" fill="#1d1d1d"/>
+
+        <!-- vapor field spreading from ethanol toward the water drop -->
+        <g stroke="#3fe6cb" fill="none" opacity=".45">
+          <path d="M400 110 A55 55 0 0 0 400 216" stroke-width="1" stroke-dasharray="4 5"/>
+          <path d="M400 94 A72 72 0 0 0 400 234" stroke-width="1" stroke-dasharray="4 5"/>
+        </g>
+        <text x="330" y="100" fill="#7fa097" font-size="9" font-style="italic">vapor</text>
+        <g stroke="#3fe6cb" stroke-width="1.3" fill="none" opacity=".85">
+          <path class="flow" d="M352 152 H302" marker-end="url(#vb)"/>
+          <path class="flow" d="M356 170 H312" marker-end="url(#vb)"/>
+          <path class="flow" d="M360 188 H322" marker-end="url(#vb)"/>
+        </g>
+
+        <!-- water drop -->
+        <path d="M115 205 a70 70 0 1 1 140 0 Z" fill="#0c2424" stroke="#2bbfa6" stroke-width="1.3"/>
+        <text x="178" y="126" text-anchor="middle" fill="#9fe6d6" font-size="10">water</text>
+
+        <!-- asymmetric adsorption: dense on the near (right) side, sparse on the far (left) -->
+        <g fill="#3fe6cb">
+          <circle cx="252.6" cy="186.9" r="2.2"/><circle cx="245.6" cy="170" r="2.2"/><circle cx="234.5" cy="155.5" r="2.2"/><circle cx="220" cy="144.4" r="2.2"/><circle cx="206" cy="138" r="2.2"/>
+        </g>
+        <g fill="#1f8f7c">
+          <circle cx="161.1" cy="139.2" r="2"/><circle cx="131.4" cy="160" r="2"/><circle cx="116.1" cy="192.8" r="2"/>
+        </g>
+
+        <!-- surface-tension gradient across the interface -->
+        <text x="270" y="138" text-anchor="middle" fill="#9fe6d6" font-size="9">low &#963;</text>
+        <text x="104" y="150" text-anchor="middle" fill="#9fe6d6" font-size="9">high &#963;</text>
+
+        <!-- surface flow, low-sigma (near) toward high-sigma (far) -->
+        <path d="M248 176 Q185 116 122 176" fill="none" stroke="#3fe6cb" stroke-width="1.9" marker-end="url(#vb)"/>
+        <!-- bulk return -->
+        <path d="M140 186 C 165 204, 215 204, 234 184" fill="none" stroke="#3fe6cb" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#vb)"/>
+        <text x="185" y="160" text-anchor="middle" fill="#3fe6cb" font-size="9" font-style="italic">Marangoni roll</text>
+        <text x="185" y="172" text-anchor="middle" fill="#00d4aa" font-size="8">~10 mm/s</text>
+
+        <!-- ethanol drop (volatile) -->
+        <path d="M358 205 a42 42 0 1 1 84 0 Z" fill="#0c2424" fill-opacity=".7" stroke="#3fe6cb" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="400" y="152" text-anchor="middle" fill="#9fe6d6" font-size="10">ethanol</text>
+        <g stroke="#3fe6cb" fill="none" stroke-width="1.2" opacity=".9">
+          <path d="M388 168 l-6 -16" marker-end="url(#vb)"/>
+          <path d="M400 164 l0 -18" marker-end="url(#vb)"/>
+          <path d="M412 168 l6 -16" marker-end="url(#vb)"/>
+        </g>
+
+        <!-- separation control -->
+        <g stroke="#5f7d77" stroke-width="1">
+          <line x1="185" y1="214" x2="185" y2="234"/>
+          <line x1="400" y1="214" x2="400" y2="234"/>
+          <line x1="187" y1="228" x2="400" y2="228" marker-end="url(#va)"/>
+          <line x1="398" y1="228" x2="185" y2="228" marker-end="url(#va)"/>
+        </g>
+        <text x="292" y="246" text-anchor="middle" fill="#9bb0aa" font-size="8.5">L&#7522; &middot; the one control: how far apart they sit</text>
+      </svg>
+      <div class="rs-cap">volatile neighbour seeds an uneven vapor field <span>solutal Marangoni</span></div>
+    </div>
+
+    <!-- RIGHT: text -->
+    <div class="rs-droptext">
+      <p>A more volatile drop set nearby, ethanol, builds an uneven vapour field around the water drop. It adsorbs more on the near side of the water surface and <span class="hl">lowers the surface tension</span> there, setting up a small but directional gradient across the drop cap.</p>
+      <p>That gradient drives a Marangoni recirculation near ten millimetres per second, about a <b>thousand times</b> the isolated drop's flow. Its strength is set by the drop spacing, it adds nothing to the liquid, leaves the drying rate unchanged, and stops once the neighbour evaporates.</p>
+    </div>
+
+  </div>
+
+  <p class="rs-note" style="margin-top:20px"><span class="hl">The vapour coupling produces a range of effects, one per panel below.</span></p>
+  <div class="rs-vgrid">
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/vapor/vmi-flow.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">flow set by a volatile neighbour <span>Marangoni</span></div>
+      <p class="rs-vdesc">A volatile ethanol drop placed beside a water drop seeds an asymmetric vapor field. The uneven adsorption drives a <span class="hl">surface-tension gradient</span>, pulling the interface into a fast Marangoni roll (~10 mm/s) with no external forcing. <a class="rs-ref" href="https://doi.org/10.1063/1.5054632" target="_blank" rel="noopener">Phys. Fluids 2018</a></p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><img src="assets/index/research/droplet-physics.gif" alt="Droplet physics" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></div>
+      <div class="rs-cap">colloidal aggregation: buckling and sol–gel <span>aggregation</span></div>
+      <p class="rs-vdesc">A nanofluid drop placed near an ethanol drop feels an asymmetric Marangoni flow (~1 mm/s) that pushes its particles to one side. The thinner shell left on the far side <span class="hl">buckles</span> under evaporation-driven capillary pressure, and the neighbour's distance sets where it buckles and the final deposit shape. <a class="rs-ref" href="https://doi.org/10.1016/j.jcis.2019.01.106" target="_blank" rel="noopener">JCIS 2019</a></p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/vapor/vmi-mixing.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">VMI mixing vs diffusion-only <span>two panels</span></div>
+      <p class="rs-vdesc"><span class="hl">Left panel:</span> a water drop is placed on a spot of food dye, and an ethanol drop set alongside drives a Marangoni convection that mixes the dye through in a few seconds. <span class="hl">Right panel:</span> with no neighbour, the same drop mixes by diffusion alone, which takes several minutes. We studied this in a viscous glycerol drop in <a class="rs-ref" href="https://doi.org/10.1039/D0CP01004A" target="_blank" rel="noopener">PCCP 2020</a>.</p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/index/video/Crystallization of salts in droplets.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">salts crystallize as the drop dries <span>crystallization</span></div>
+      <p class="rs-vdesc">A saline drop left to evaporate deposits <span class="hl">salt crystals</span> as it dries. The evaporation-driven flow and contact-line pinning set where the crystals nucleate and the pattern they leave behind.</p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/vapor/vmi-crystallization.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">crystallization sites steered <span>deposition</span></div>
+      <p class="rs-vdesc">The internal roll carries solute toward or away from the contact line depending on neighbour placement. We redirect crystallization nucleation sites <span class="hl">on demand</span>, without touching the drop. <a class="rs-ref" href="https://doi.org/10.1016/j.jcis.2021.09.158" target="_blank" rel="noopener">JCIS 2022</a></p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/vapor/vmi-transport.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">whole droplets moved on cue <span>transport</span></div>
+      <p class="rs-vdesc">A sustained vapor gradient exerts a net force on the drop's contact line. The drop <span class="hl">migrates toward the volatile source</span>, covering millimetres on a flat surface with no mechanical actuator.</p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/vapor/vmi-splitmerge.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">split, then merged into violent vortices <span>manipulation</span></div>
+      <p class="rs-vdesc">An asymmetric ethanol vapor field drains liquid from a drop's centre and <span class="hl">splits</span> it. Remove the vapor and the halves flow back and coalesce, driving a brief internal vortex visible in tracer particles.</p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/vapor/vmi-aggregate.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">buoyant particles self-assemble into an aggregate <span>formation</span></div>
+      <p class="rs-vdesc">Particles less dense than the liquid rise to the curved top surface and slide toward the apex, collecting into a <span class="hl">tight central aggregate</span> rather than a rim ring. The larger, more buoyant particles reach the centre first and the smaller ones settle around them, giving a size-graded mound set by the drop's curvature. <a class="rs-ref" href="https://doi.org/10.1016/j.jcis.2021.04.006" target="_blank" rel="noopener">JCIS 2021</a></p>
+    </div>
+
+    <div class="rs-fig" data-v>
+      <div class="vid"><video muted loop playsinline preload="metadata"><source src="assets/research/vapor/vmi-disperse.mp4" type="video/mp4"></video></div>
+      <div class="rs-cap">volatile neighbour disperses the aggregate <span>VMI dispersal</span></div>
+      <p class="rs-vdesc">A volatile drop set alongside drives a Marangoni convection far stronger than the evaporation flow, roughly a thousandfold, which <span class="hl">breaks the aggregate apart</span> and scatters the particles across the drop. <a class="rs-ref" href="https://doi.org/10.1016/j.jcis.2021.04.006" target="_blank" rel="noopener">JCIS 2021</a></p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer" style="padding: 0; margin: 0; background: #000;">
+  <div class="container" style="padding: var(--space-md) var(--space-md); background: #000;">
+    <div class="footer__bottom" style="padding: 0; margin: 0;">
+      <span>&copy; 2026 Omkar Hegde</span>
+      <span>Built with curiosity and care.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="rs-lb" id="rs-lb"><button class="rs-lb__close" aria-label="Close">&times;</button><img alt="Enlarged figure"></div>
+<script>
+(function(){
+  var lb=document.getElementById('rs-lb'); if(!lb) return;
+  var img=lb.querySelector('img');
+  function addBtn(fig,handler){
+    var b=document.createElement('button'); b.className='rs-zoom-btn';
+    b.textContent='⤢ expand'; b.setAttribute('aria-label','Expand figure');
+    b.addEventListener('click',function(e){e.stopPropagation();handler();});
+    fig.appendChild(b);
+  }
+  document.querySelectorAll('.rs-vrow--zoom img').forEach(function(el){
+    var fig=el.closest('.rs-fig');
+    function open(){img.src=el.currentSrc||el.src;lb.classList.add('open');}
+    el.addEventListener('click',open);
+    if(fig) addBtn(fig,open);
+  });
+  document.querySelectorAll('.rs-fig svg, .rs-dropfig__svg svg').forEach(function(svg){
+    svg.style.cursor='pointer';
+    var fig=svg.closest('.rs-fig,.rs-dropfig__svg');
+    function openSvg(){
+      var xml=new XMLSerializer().serializeToString(svg);
+      var blob=new Blob([xml],{type:'image/svg+xml'});
+      var url=URL.createObjectURL(blob);
+      img.src=url; lb.classList.add('open');
+      lb.addEventListener('click',function once(){URL.revokeObjectURL(url);lb.removeEventListener('click',once);},{once:true});
+    }
+    svg.addEventListener('click',openSvg);
+    if(fig) addBtn(fig,openSvg);
+  });
+  document.querySelectorAll('.rs-fig img[data-zoom]').forEach(function(el){
+    var fig=el.closest('.rs-fig');
+    function open(){img.src=el.currentSrc||el.src;lb.classList.add('open');}
+    el.addEventListener('click',open);
+    if(fig) addBtn(fig,open);
+  });
+  function close(){ lb.classList.remove('open'); img.removeAttribute('src'); }
+  lb.addEventListener('click',function(e){ if(e.target!==img) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
+})();
+</script>
+<script src="js/app.js"></script>
+<script>
+(function(){
+  var vids=document.querySelectorAll('.rs-fig[data-v],.rs-imgwrap[data-v],.rs-vcell[data-v]');
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector('video');if(!v)return;if(e.isIntersecting){v.play().catch(function(){});}else{v.pause();}});},{threshold:0.3});
+  vids.forEach(function(f){obs.observe(f);});
+})();
+(function(){
+  var cards=document.querySelectorAll('.rs-card--img[data-reveal]');
+  function replay(c){ c.classList.remove('is-on'); void c.offsetWidth; c.classList.add('is-on'); }
+  var ro=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-on'); } });},{threshold:0.35});
+  cards.forEach(function(c){ ro.observe(c); c.addEventListener('click',function(){replay(c);}); });
+})();
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ids=['self-assembly','microfluidics','ai','cfd','active-matter','droplets','vapor'];
+  var secs=[];
+  ids.forEach(function(id){ var s=document.getElementById(id); if(s){ s.classList.add('rs-reveal'); secs.push(s); } });
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var el=e.target;
+      if(e.isIntersecting){ el.classList.remove('is-in'); void el.offsetWidth; el.classList.add('is-in'); }
+      else{ el.classList.remove('is-in'); }
+    });
+  },{threshold:0,rootMargin:'0px 0px -40% 0px'});
+  secs.forEach(function(s){ obs.observe(s); });
+})();
+(function(){
+  var RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var MAX=40, INTERVAL=3500, EXT=['jpg','jpeg','png','webp'];
+  document.querySelectorAll('.rs-loop').forEach(function(tile){
+    var base=tile.getAttribute('data-base'), alt=tile.getAttribute('data-alt')||'';
+    var stack=tile.querySelector('.rs-loop__stack'), frames=[], idx=0;
+    function url(n,ei){ return (n===1?base:base+'-'+n)+'.'+EXT[ei]; }
+    function addFrame(src){
+      var el=document.createElement('img');
+      el.src=src; el.alt=alt; el.className='rs-loop__f'; el.loading='lazy';
+      el.style.opacity=frames.length===0?'1':'0';
+      stack.appendChild(el); frames.push(el);
+    }
+    function tryFrame(n,ei){
+      if(ei>=EXT.length){ finalize(); return; }
+      var img=new Image();
+      img.onload=function(){ addFrame(url(n,ei)); if(n>=MAX){ finalize(); return; } tryFrame(n+1,0); };
+      img.onerror=function(){ tryFrame(n,ei+1); };
+      img.src=url(n,ei);
+    }
+    function finalize(){
+      if(frames.length===0){ tile.classList.add('is-empty'); return; }
+      if(frames.length<2||RM) return;
+      var timer=null;
+      function tick(){ frames[idx].style.opacity='0'; idx=(idx+1)%frames.length; frames[idx].style.opacity='1'; }
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting){ if(!timer) timer=setInterval(tick,INTERVAL); }
+        else if(timer){ clearInterval(timer); timer=null; }
+      });},{threshold:0.25});
+      io.observe(tile);
+    }
+    tryFrame(1,0);
+  });
+})();
+</script>
+</body>
+</html>
